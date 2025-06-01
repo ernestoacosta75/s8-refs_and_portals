@@ -1,4 +1,4 @@
-import Player from './components/Player.jsx';
+import Player from '@features/Player/Player.jsx';
 
 function App() {
   return (
