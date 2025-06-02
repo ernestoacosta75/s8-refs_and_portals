@@ -10,6 +10,7 @@ const TimerChallenge = ({ title, targetTime }) => {
     const handleStart = () => {
         timer.current = setTimeout(() => {
             setTimerExpired(true);
+            setTimerStarted(false);
         }, targetTime * 1000);
 
         setTimerStarted(true);
@@ -28,7 +29,7 @@ const TimerChallenge = ({ title, targetTime }) => {
             {targetTime} second{ targetTime > 1 ? "s" : "" }
         </p>
         <p>
-            <button onClick={timerStarted ? handleStop : handleStart}>{timerStarted ? "Stop" : "Start"} Challenge</button>
+            <button ref={timer} onClick={timerStarted ? handleStop : handleStart}>{timerStarted ? "Stop" : "Start"} Challenge</button>
         </p>
         <p className={timerStarted ? "active" : undefined}>
             {timerStarted ? "Time is running..." : "Timer inactive"}
